@@ -1,5 +1,5 @@
-FROM alpine:3.8
-COPY docker/ /docker/
+FROM agrozyme/alpine:3.8
+COPY docker /docker/
 
 RUN set -ex \
   && chmod +x /docker/*.sh \
