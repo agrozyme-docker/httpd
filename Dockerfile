@@ -7,6 +7,8 @@ RUN set -ex \
   && mkdir -p /run/apache2 /usr/local/etc/apache2 \
   && mv /var/www/localhost /var/www/html \
   && chown -R nobody:nobody /var/www/html \
+  && ln -sf /dev/stdout /var/log/apache2/access.log \
+  && ln -sf /dev/stderr /var/log/apache2/error.log \
   && sed -ri \
   -e 's!^#LoadModule mpm_event_module !LoadModule mpm_event_module !' \
   -e 's!^LoadModule mpm_prefork_module !#LoadModule mpm_prefork_module !' \
