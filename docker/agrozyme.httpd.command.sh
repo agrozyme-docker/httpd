@@ -1,4 +1,4 @@
 #!/bin/sh
-set -e
+set -ex
 rm -f /run/apache2/httpd.pid
 exec httpd -DFOREGROUND
