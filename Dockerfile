@@ -1,18 +1,14 @@
-FROM agrozyme/alpine:3.8
+FROM alpine:3.8
 COPY docker /docker/
 
 RUN set -ex \
   && chmod +x /docker/*.sh \
   && apk add --no-cache apache2 apache2-proxy apache2-http2 \
-  # && apk add --no-cache apache2 apache2-proxy \
   && mkdir -p /run/apache2 /usr/local/etc/apache2 \
   && mv /var/www/localhost /var/www/html \
   && chown -R nobody:nobody /var/www/html \
   && ln -sf /dev/stdout /var/log/apache2/access.log \
   && ln -sf /dev/stderr /var/log/apache2/error.log \
-  # && sed -ri \
-  # -e 's!/var/www/localhost/htdocs!/var/www/html!g' \
-  # /etc/apache2/conf.d/ssl.conf \
   && sed -ri \
   -e '$ a Protocols h2 h2c http/1.1' \
   /etc/apache2/conf.d/http2.conf \
