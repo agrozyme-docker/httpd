@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM agrozyme/alpine:3.8
 COPY docker /docker/
 
 RUN set -ex \
