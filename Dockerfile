@@ -1,7 +1,7 @@
 FROM agrozyme/alpine:3.8
 COPY docker /docker/
 
-RUN set -ex \
+RUN set -euxo pipefail \
   && chmod +x /docker/*.sh \
   && apk add --no-cache apache2 apache2-proxy apache2-http2 \
   && mkdir -p /run/apache2 /usr/local/etc/apache2 \
@@ -9,9 +9,7 @@ RUN set -ex \
   && chown -R nobody:nobody /var/www/html \
   && ln -sf /dev/stdout /var/log/apache2/access.log \
   && ln -sf /dev/stderr /var/log/apache2/error.log \
-  && sed -ri \
-  -e '$ a Protocols h2 h2c http/1.1' \
-  /etc/apache2/conf.d/http2.conf \
+  && sed -ri -e '$ a Protocols h2 h2c http/1.1' /etc/apache2/conf.d/http2.conf \
   && sed -ri \
   -e 's!^#LoadModule mpm_event_module !LoadModule mpm_event_module !' \
   -e 's!^LoadModule mpm_prefork_module !#LoadModule mpm_prefork_module !' \
