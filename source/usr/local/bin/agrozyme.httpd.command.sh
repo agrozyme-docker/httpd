@@ -1,5 +1,10 @@
 #!/bin/bash
 set -euo pipefail
-docker-core.sh
-rm -f /run/apache2/httpd.pid
-exec httpd -DFOREGROUND
+
+function main() {
+  docker-core.sh change_core
+  rm -f /run/apache2/httpd.pid
+  exec httpd -DFOREGROUND
+}
+
+main "$@"
