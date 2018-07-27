@@ -2,7 +2,7 @@
 set -euo pipefail
 
 function main() {
-  docker-core.sh change_core
+  agrozyme.alpine.function.sh change_core
   rm -f /run/apache2/httpd.pid
   exec httpd -DFOREGROUND
 }
