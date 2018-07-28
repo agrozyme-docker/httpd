@@ -4,7 +4,7 @@ COPY source /
 RUN set -euxo pipefail \
   && chmod +x /usr/local/bin/*.sh \
   && apk add --no-cache apache2 apache2-proxy apache2-http2 \
-  && mkdir -p /run/apache2 /usr/local/etc/apache2 \
+  && mkdir -p /usr/local/etc/apache2 \
   && mv /var/www/localhost/* /var/www/ \
   && mv /var/www/htdocs /var/www/html \
   && rm -rf /var/www/localhost \
