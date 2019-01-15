@@ -1,6 +1,7 @@
+# Summary
 The Apache HTTP Server Project
 
-# Settings:
+# Settings
 - MPM: Event
 - DocumentRoot Directory: /var/www/html
 - Default Configuration Directory: /etc/apache2
