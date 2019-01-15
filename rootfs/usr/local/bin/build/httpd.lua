@@ -36,13 +36,7 @@ local function update_httpd()
 end
 
 local function replace_setting()
-  if
-    (pcall(
-      function()
-        require("rex_pcre")
-      end
-    ))
-   then
+  if (core.has_modules("rex_pcre")) then
     update_http2()
     update_proxy()
     update_httpd()
