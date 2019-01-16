@@ -53,8 +53,7 @@ local function main()
   core.run("mv /var/www/localhost/* /var/www/")
   core.run("mv /var/www/htdocs /var/www/html")
   core.run("rm -rf /var/www/localhost")
-  core.run("ln -sf /dev/stdout /var/log/apache2/access.log")
-  core.run("ln -sf /dev/stderr /var/log/apache2/error.log")
+  core.link_log("/var/log/apache2/access.log", "/var/log/apache2/error.log")
   replace_setting()
 end
 
