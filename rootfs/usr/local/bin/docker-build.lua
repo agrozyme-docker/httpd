@@ -46,7 +46,7 @@ local function replace_setting()
 end
 
 local function main()
-  -- core.run("apk add --no-cache lua5.3-rex-pcre")
+  -- core.run("apk add --no-cache lua-rex-pcre")
   core.run("apk add --no-cache apache2 apache2-proxy apache2-http2")
   core.run("mkdir -p /usr/local/etc/apache2")
   core.run("mv /var/www/localhost/* /var/www/")
