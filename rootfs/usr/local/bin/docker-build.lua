@@ -48,7 +48,6 @@ end
 local function main()
   -- core.run("apk add --no-cache lua5.3-rex-pcre")
   core.run("apk add --no-cache apache2 apache2-proxy apache2-http2")
-  core.run("chmod +x /usr/local/bin/*")
   core.run("mkdir -p /usr/local/etc/apache2")
   core.run("mv /var/www/localhost/* /var/www/")
   core.run("mv /var/www/htdocs /var/www/html")
